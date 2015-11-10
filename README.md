@@ -66,7 +66,7 @@ You can now test to make sure your environment and app are setup correctly by ru
 python myapp.py
 ```
 
-You should see output like `Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)` and you should be able to navigate to [localhost:5000](localhost:5000) and [localhost:5000/holy-cow](localhost:5000/holy-cow)
+You should see output like `Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)` and you should be able to navigate to [localhost:5000](http://localhost:5000) and [localhost:5000/holy-cow](http://localhost:5000/holy-cow)
 
 #### Create The uWSGI Server
 
@@ -86,7 +86,7 @@ vim /var/www/python-flask-uwsgi/wsgi.py
 uwsgi --socket 0.0.0.0:8000 --protocol=http -w myapp:app
 ```
 
-You should see output like `uWSGI is running in multiple interpreter mode` and you should be able to navigate to [localhost:8000](localhost:8000) and [localhost:8000/holy-cow](localhost:8000/holy-cow)
+You should see output like `uWSGI is running in multiple interpreter mode` and you should be able to navigate to [localhost:8000](http://localhost:8000) and [localhost:8000/holy-cow](http://localhost:8000/holy-cow)
 
 #### Run uWSGI In A Background Process
 
