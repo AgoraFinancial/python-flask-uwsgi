@@ -50,7 +50,7 @@ pip install uwsgi flask
 ```
 #### Create Your App
 
-**Source Code: ** `myapp.py`
+**Source Code:** `myapp.py`
 
 Create your primary Flask app file and copy the source code into the file
 
@@ -70,7 +70,7 @@ You should see output like `Running on http://0.0.0.0:5000/ (Press CTRL+C to qui
 
 #### Create The uWSGI Server
 
-**Source Code: ** `wsgi.py`
+**Source Code:** `wsgi.py`
 
 Create your primary uWSGI app file and copy the source code into the file
 
@@ -92,7 +92,7 @@ You should see output like `uWSGI is running in multiple interpreter mode` and y
 
 At this point, Flask and uWSGI should be working. However, we don't want to serve and run uWSGI from the command line. Instead, we can start uWSGI from Ubuntu's `Upstart` init system. Other tutorials suggest `supervisor`, but I'm sticking with `Upstart`
 
-**Source Code: ** `uwsgi.ini`
+**Source Code:** `uwsgi.ini`
 
 Create your primary uWSGI app file and copy the source code into the file
 
