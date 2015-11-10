@@ -99,3 +99,6 @@ Create your primary uWSGI app file and copy the source code into the file
 ```bash
 vim /var/www/python-flask-uwsgi/uwsgi.ini
 ```
+
+**Create Upstart Script**
+
