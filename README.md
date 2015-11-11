@@ -4,7 +4,7 @@ For the most part, we can follow this tutorial from Digital Ocean, [How To Serve
 
 However, certain aspects of this tutorial didn't work for me, so I made some modifications.
 
-#### Prerequisites
+#### Dependencies
 
 You need to have python, pip, python-dev and nginx installed
 
@@ -19,7 +19,7 @@ Also, you need to install `virtualenv` to isolate Python applications
 sudo pip install virtualenv
 ```
 
-#### Create our project folder
+#### Create Your Environment
 
 And add our virtual environment
 
@@ -33,6 +33,20 @@ And activate your virtual environment
 
 ```bash
 source myappenv/bin/activate
+```
+
+Make your log folder and  file
+
+```bash
+touch logs/uwsgi.log
+sudo chown <user>:<user> logs/uwsgi.log
+chmod 774 logs/uwsgi.log
+
+Ensure all of the files in your root directory have the correct owner
+
+```bash
+touch logs/uwsgi.log
+sudo chown _R <user>:<nginx-user> /var/www/python-flask-uwsgi
 ```
 
 #### Install Flask and uWSGI
@@ -70,12 +84,14 @@ You should see output like `Running on http://0.0.0.0:5000/ (Press CTRL+C to qui
 
 #### Create The uWSGI Server
 
-**Source Code:** `uwsgi.py`
+Be sure to name this file `wsgi.py` and **NOT** `uwsgi.py`, which appears to be a reserved file name.
+
+**Source Code:** `wsgi.py`
 
 Create your primary uWSGI app file and copy the source code into the file
 
 ```bash
-vim /var/www/python-flask-uwsgi/uwsgi.py
+vim /var/www/python-flask-uwsgi/wsgi.py
 ```
 
 #### Configure uWSGI
@@ -83,7 +99,7 @@ vim /var/www/python-flask-uwsgi/uwsgi.py
 **First** test that uWSGI is actually working.
 
 ```bash
-uwsgi --socket 0.0.0.0:8000 --protocol=http -w myapp:app
+uwsgi --socket 0.0.0.0:8000 --protocol=http -w wsgi:app
 ```
 
 You should see output like `uWSGI is running in multiple interpreter mode` and you should be able to navigate to [localhost:8000](http://localhost:8000) and [localhost:8000/holy-cow](http://localhost:8000/holy-cow)
@@ -102,3 +118,8 @@ vim /var/www/python-flask-uwsgi/uwsgi.ini
 
 **Create Upstart Script**
 
+You can troubleshoot issues with your Upstart script be viewing it's log.
+
+```bash
+sudo tail -f /var/log/upstart/python-flask-uwsgi.log
+```
