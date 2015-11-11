@@ -170,7 +170,7 @@ sudo vim /etc/hosts
 You should now be able to navigate to [python-flask-uwsgi.dev](http://python-flask-uwsgi.dev) and see **Foo Bar!**
 
 #### Auto Reload Python Code On File Change With Grunt
-**(Should only be used in development environments)
+**(Should only be used in development environments)**
 
 This is a huge time saver for your development work flow.
 
