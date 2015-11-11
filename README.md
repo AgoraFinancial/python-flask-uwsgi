@@ -169,3 +169,51 @@ sudo vim /etc/hosts
 
 You should now be able to navigate to [python-flask-uwsgi.dev](http://python-flask-uwsgi.dev) and see **Foo Bar!**
 
+#### Auto Reload Python Code On File Change With Grunt
+
+This is a huge time saver for your development work flow.
+
+**How does this work?**
+
+I will not go into how to install Node.js and Grunt, you can find tutorials on your own.
+
+Copy the relevant `package.json` requirements into your package.json file and update `npm`.
+
+```json
+"dependencies": {
+    "grunt": "~0.4.1",
+    "load-grunt-tasks": "~0.2.0"
+},
+"devDependencies": {
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-shell": "^1.1.2"
+}
+```
+
+```bash
+# install the dependencies
+sudo npm update
+
+# start the grunt watch process
+grunt monitorpy
+```
+
+As you can see in `Gruntfile.js`, `grunt monitorpy` will watch for changes in all .py files, if it detects changes, it will fire the `shell` task, which reloads your python code in `wsgi`.
+
+```javascript
+watch: {
+    py: {
+        files: ['*/*.py', '**/*.py'],
+        tasks: ['shell']
+    }
+},
+shell: {
+    options: {
+        stderr: false
+    },
+    target: {
+        command: 'touch reload'
+    }
+}
+```
+

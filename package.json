@@ -1,0 +1,14 @@
+{
+    "name": "nodemanager",
+    "version": "1.0.0",
+    "description": "install node apps",
+    "main": "Gruntfile.js",
+    "dependencies": {
+        "grunt": "~0.4.1",
+        "load-grunt-tasks": "~0.2.0"
+    },
+    "devDependencies": {
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-shell": "^1.1.2"
+    }
+}
