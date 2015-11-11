@@ -232,7 +232,7 @@ shell: {
 }
 ```
 
-#### Toubleshooting
+#### Troubleshooting
 
 Odds are, this won't work on your first try, so monitor these files to try and figure out what is going on.
 
