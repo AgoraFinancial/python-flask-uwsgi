@@ -70,12 +70,12 @@ You should see output like `Running on http://0.0.0.0:5000/ (Press CTRL+C to qui
 
 #### Create The uWSGI Server
 
-**Source Code:** `wsgi.py`
+**Source Code:** `uwsgi.py`
 
 Create your primary uWSGI app file and copy the source code into the file
 
 ```bash
-vim /var/www/python-flask-uwsgi/wsgi.py
+vim /var/www/python-flask-uwsgi/uwsgi.py
 ```
 
 #### Configure uWSGI

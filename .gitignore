@@ -1,3 +1,5 @@
 *.pyc
 /logs
 !/logs/.gitkeep
+/myappenv
+!/myappenv/.gitkeep
