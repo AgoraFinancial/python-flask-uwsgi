@@ -42,6 +42,7 @@ Make your log folder and  file
 touch logs/uwsgi.log
 sudo chown <user>:<user> logs/uwsgi.log
 chmod 774 logs/uwsgi.log
+```
 
 Ensure all of the files in your root directory have the correct owner
 
@@ -170,7 +171,7 @@ sudo vim /etc/hosts
 You should now be able to navigate to [python-flask-uwsgi.dev](http://python-flask-uwsgi.dev) and see **Foo Bar!**
 
 #### Auto Reload Python Code On File Change With Grunt
-**(Should only be used in development environments)**
+**(This should only be used in development environments)**
 
 This is a huge time saver for your development work flow.
 
@@ -231,3 +232,14 @@ shell: {
 }
 ```
 
+#### Toubleshooting
+
+Odds are, this won't work on your first try, so monitor these files to try and figure out what is going on.
+
+```bash
+# This file should provide a detailed access and error log
+tail -f /var/www/python-flask-uwsgi/logs/uwsgi.log
+tail -f /var/log/upstart/python-flask-uwsgi.log
+tail -f /var/log/syslog
+tail -f /var/log/nginx/error.log
+```
