@@ -108,17 +108,35 @@ You should see output like `uWSGI is running in multiple interpreter mode` and y
 
 At this point, Flask and uWSGI should be working. However, we don't want to serve and run uWSGI from the command line. Instead, we can start uWSGI from Ubuntu's `Upstart` init system. Other tutorials suggest `supervisor`, but I'm sticking with `Upstart`
 
-**Source Code:** `uwsgi.ini`
+**Source Code:** `myapp.ini`
 
 Create your primary uWSGI app file and copy the source code into the file
 
 ```bash
-vim /var/www/python-flask-uwsgi/uwsgi.ini
+vim /var/www/python-flask-uwsgi/myapp.ini
 ```
 
 **Create Upstart Script**
 
-You can troubleshoot issues with your Upstart script be viewing it's log.
+Copy the source code into your `Upstart` script file
+
+**Source Code:** `myapp.ini`
+
+```bash
+sudo vim /etc/init/python-flask-uwsgi.conf
+```
+
+And then start your `python-flask-uwsgi` service
+
+```bash
+sudo service python-flask-uwsgi start
+
+# You can also stop and restart the service
+sudo service python-flask-uwsgi stop
+sudo service python-flask-uwsgi restart
+```
+
+You can troubleshoot issues with your Upstart script by viewing it's log.
 
 ```bash
 sudo tail -f /var/log/upstart/python-flask-uwsgi.log
