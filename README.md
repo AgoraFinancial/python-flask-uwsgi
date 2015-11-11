@@ -1,4 +1,5 @@
-# How to setup Flask, with uwsgi and Nginx
+# How To Setup Flask, With uWSGI And Nginx
+**And auto-reload your Python code with Grunt**
 
 For the most part, we can follow this tutorial from Digital Ocean, [How To Serve Flask Applications with uWSGI and Nginx on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-14-04)
 
@@ -141,3 +142,30 @@ You can troubleshoot issues with your Upstart script by viewing it's log.
 ```bash
 sudo tail -f /var/log/upstart/python-flask-uwsgi.log
 ```
+
+#### Nginx Configuration
+
+Finally we're getting somewhere!
+
+I will not go into how to install nginx, there are plenty of tutorials you can find on your own.
+
+**Source Code:** `nginx.conf`
+
+```bash
+sudo vim /etc/nginx/sites-available/python-flask-uwsgi.dev
+
+# Add your symbolic link to sites-enabled
+sudo ln -s /etc/nginx/sites-available/python-flask-uwsgi.dev /etc/nginx/sites-enabled/python-flask-uwsgi.dev
+
+# restart nginx
+sudo service nginx restart
+```
+
+Edit your hosts file to include `127.0.0.1  python-flask-uwsgi.dev`
+
+```bash
+sudo vim /etc/hosts
+```
+
+You should now be able to navigate to [python-flask-uwsgi.dev](http://python-flask-uwsgi.dev) and see **Foo Bar!**
+
