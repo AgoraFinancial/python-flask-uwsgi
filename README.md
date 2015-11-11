@@ -170,10 +170,24 @@ sudo vim /etc/hosts
 You should now be able to navigate to [python-flask-uwsgi.dev](http://python-flask-uwsgi.dev) and see **Foo Bar!**
 
 #### Auto Reload Python Code On File Change With Grunt
+**(Should only be used in development environments)
 
 This is a huge time saver for your development work flow.
 
 **How does this work?**
+
+The `myapp.ini` file has a line `touch-reload = %(base)/reload`. This `uwsgi` directive tells `uwsgi` to recompile your code every time you run the command;
+
+```bash
+touch /var/www/python-flask-uwsgi/reload
+
+# You can also reload your python code by restarting your Upstart script
+sudo service python-flask-uwsgi restart
+```
+
+Instead of manually running terminal commands every time you update your python code (which can be hundreds of times a day during development), you can have `Grunt` monitor your project's `.py` files for changes, and fire the `touch reload` command every time you save changes to a python file.
+
+**Installing Node.js and Grunt**
 
 I will not go into how to install Node.js and Grunt, you can find tutorials on your own.
 
