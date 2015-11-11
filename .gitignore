@@ -3,3 +3,4 @@
 !/logs/.gitkeep
 /myappenv
 !/myappenv/.gitkeep
+/node_modules
